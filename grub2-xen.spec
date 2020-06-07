@@ -27,7 +27,7 @@ Source2:        grub-xen.cfg
 Patch0:         grub-alias-linux16.patch
 
 BuildRequires:  gcc
-BuildRequires:  flex bison binutils python
+BuildRequires:  flex bison binutils python3
 BuildRequires:  ncurses-devel xz-devel
 BuildRequires:  freetype-devel libusb-devel
 %ifarch %{sparc} x86_64
@@ -84,7 +84,7 @@ mkdir grub-xen_pvh-i386
 cp %{SOURCE1} %{SOURCE2} grub-xen_pvh-i386/
 
 %build
-./autogen.sh
+PYTHON=python3 ./autogen.sh
 cd grub-xen-x86_64
 %configure							\
 	CFLAGS="$(echo $RPM_OPT_FLAGS | sed			\
